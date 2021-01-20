@@ -3,7 +3,6 @@ void setup()
   pinMode(5, INPUT_PULLUP);
   pinMode(6, INPUT_PULLUP);
   pinMode(7, INPUT_PULLUP);
-  pinMode(LED_BUILTIN, OUTPUT);
   pinMode(8, OUTPUT);
   pinMode(9, OUTPUT);
   pinMode(10, OUTPUT);
@@ -14,9 +13,7 @@ void setup()
   #define UpRight 8
   #define DownRight 9
   #define UpLeft 10
-  #define DownLeft 11  
-  Serial.begin(9600);
-  Serial.println("setup");
+  #define DownLeft 11
 }
 
 void loop() 
@@ -25,13 +22,12 @@ void loop()
   if (digitalRead(ButtonUp)==LOW)
   {
     control=3;
-    Serial.println("három e");
   }
-  if (digitalRead(ButtonStop)==LOW)
+  else if (digitalRead(ButtonStop)==LOW)
   {
     control=2;
   }
-  if (digitalRead(ButtonDown)==LOW)
+  else if (digitalRead(ButtonDown)==LOW)
   {
     control=1;
   }
@@ -39,12 +35,10 @@ void loop()
   {
     digitalWrite(UpRight, HIGH);
     digitalWrite(UpLeft, HIGH);
-    Serial.println("megyen");
     if (digitalRead(ButtonStop)==LOW)
     {
       digitalWrite(UpRight, LOW);
       digitalWrite(UpLeft, LOW);
-      Serial.println("nem megyen");
       break;
     }
   }
